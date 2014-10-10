@@ -3,8 +3,8 @@ dreamforce500-leaderboard
 
 Small express app that shows the Leaderboard for the Cylon.js race demo in Dreamforce 2014, The Cylon.js 500!
 
-This app displays a simple players leaderboard pulling the information pushed by [Cylon.js](cylonjs.com)
-robots demo from Salesforce.
+This app displays a simple players leaderboard pulling the information, previously pushed by [Cylon.js](cylonjs.com)
+race demo, from Salesforce.
 
 Cylon.js is a JavaScript framework for robotics and physical computing built on top of Node.js.
 
