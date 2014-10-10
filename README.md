@@ -1,9 +1,7 @@
 dreamforce500-leaderboard
 =========================
 
-Leaderboard for Cylon.js race demo in Dreamforce 2014
-
-Small express app made to track the leaders of the Cylon.js 500! race for Dreamforce 2014.
+Small express app that shows the Leaderboard for the Cylon.js race demo in Dreamforce 2014, The Cylon.js 500!
 
 This app displays a simple players leaderboard pulling the information pushed by [Cylon.js](cylonjs.com)
 robots demo from Salesforce.
