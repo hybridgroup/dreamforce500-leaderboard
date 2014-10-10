@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Dreamforce 500! starring Cylon.js
+  table(class='table table-striped table-bordered')
+    tr
+      th Name
+      th Player
+      th Game
+      th Collisions
+      th Seconds
+    - for (var i = 0; i < records.length; i++) {
+    tr
+      td= records[i].Name
+      td= records[i].game_id__c
+      td= records[i].player_id__c
+      td= records[i].collisions__c
+      td= records[i].seconds__c
+    - }

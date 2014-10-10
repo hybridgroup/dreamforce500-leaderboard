@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+var debug = require('debug')('df14-leaderboard');
+
+// Salesforce settings
+var JSForce = require('jsforce');
+
+var sfuser = process.env.SF_USERNAME,
+    sfpass = process.env.SF_SECURITY_TOKEN;
+
+var sfCon = new JSForce.Connection({});
+
+var app = require('../app');
+
+app.sfCon = sfCon;
+
+app.set('port', process.env.PORT || 3000);
+
+var sfPull = function(){
+  var query = 'SELECT Id, Name, game_id__c, player_id__c, collisions__c, seconds__c FROM Race__c ORDER BY seconds__c ASC LIMIT 10';
+
+  app.sfCon.query(query, function(err, data) {
+    if ('function' === typeof(callback)) {
+      callback(err, data);
+    }
+
+    console.log('[' + Date() + ']: RECORDS WERE JUST RETRIEVED FROM SALESFORCE...');
+    app.data = data;
+  }.bind(this));
+};
+
+app.sfCon.login(sfuser, sfpass, function(err, userInfo) {
+  if (!!err) {
+    throw new Error(err);
+  }
+
+  // Do first Salesforce records pull
+  sfPull();
+
+  // Setup interval to pull every 5 mins
+  setInterval(sfPull, 300000);
+
+  app.data = app.data || { records: {} };
+
+  var server = app.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
+  });
+
+}.bind(this));
