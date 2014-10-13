@@ -1,6 +1,10 @@
 extends layout
 
 block content
+  .leader-title-checker
+    .leader-title-bg
+      h2 Dreamforce 500
+      p Homemade by <a href="http://hybridgroup.com" target="_new">The Hybrid Group</a>
   table(class='table table-striped table-bordered')
     //- tr
     //-   th.player Player
@@ -11,7 +15,7 @@ block content
     - for (var i = 0; i < records.length; i++) {
     tr
       td.rank= i + 1
-      td.player= records[i].player_id__c
+      td.player= records[i].player_id__c.split("@")[0]
       //- td.name= records[i].Name
       //- td.player= records[i].game_id__c
       //- td.collisions= records[i].collisions__c
