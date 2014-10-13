@@ -1,19 +1,19 @@
 extends layout
 
 block content
-  h1 Dreamforce 500! starring Cylon.js
   table(class='table table-striped table-bordered')
-    tr
-      th Name
-      th Player
-      th Game
-      th Collisions
-      th Seconds
+    //- tr
+    //-   th.player Player
+    //-   th.name Name
+    //-   th.game Game
+    //-   th.collisions Collisions
+    //-   th.seconds Seconds
     - for (var i = 0; i < records.length; i++) {
     tr
-      td= records[i].Name
-      td= records[i].game_id__c
-      td= records[i].player_id__c
-      td= records[i].collisions__c
-      td= records[i].seconds__c
+      td.rank= i + 1
+      td.player= records[i].player_id__c
+      //- td.name= records[i].Name
+      //- td.player= records[i].game_id__c
+      //- td.collisions= records[i].collisions__c
+      td.seconds= records[i].seconds__c + " seconds"
     - }
